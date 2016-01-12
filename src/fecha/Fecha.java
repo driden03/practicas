@@ -63,7 +63,7 @@ public class Fecha {
         if ((year%4==0 && year %100!=0)|| (year%400==0) )
             dias =29;
             
-            return dias;
+                    return dias;
     }
     
         public int bisiesto(int a)
@@ -89,7 +89,7 @@ public class Fecha {
                     {
                     resultado=false;
                     }
-                    else
+                else 
                     {
                      if (d<1 ||d> diaMes [m-1])
                         {
@@ -98,5 +98,15 @@ public class Fecha {
                     }
                 }
             return resultado;
+        }
+        
+        public int clacularNumeroOrden()
+        {
+            int orden=0;
+            int[]diaMes={31,28,31,30,31,30,31,31,30,31,30,31};
+            for (int m=0; m<mes-1; m++)
+                orden=orden+diaMes[m];
+            orden=orden +dia;
+            return orden;
         }
 }
