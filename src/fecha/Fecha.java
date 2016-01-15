@@ -15,7 +15,8 @@ public class Fecha {
     private int mes;
     private int year;
 
-    private static int [] diasMes={31,28,31,30,31,30,31,31,30,31,30,31};
+    private static int[] diasMes = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
     /**
      * @return the dia
      */
@@ -129,25 +130,50 @@ public class Fecha {
         return resultado;
 
     }
-   
-    
+
     /**
-     * metodo que calcula los dias que han pasado del año hasta la fecha que 
+     * metodo que calcula los dias que han pasado del año hasta la fecha que
      * introducimos
+     *
      * @return los dias del año que han pasado hasta la fecha
      */
-    public int diaspasanAno()
-    {//metodo diaspasanAno
-        int diasHastaFecha=0;//vble para acumular los dias que han pasado
+    public int diaspasanAno() {//metodo diaspasanAno
+        int diasHastaFecha = 0;//vble para acumular los dias que han pasado
         int mes;//vble para ir recorriendo los meses
-        diasMes[1]=bisiesto(year);//compruebo si el año es bisiesto 
-        for (mes=1;mes<this.mes;mes++)//bucle que recorre el vector diasMes
+        diasMes[1] = bisiesto(year);//compruebo si el año es bisiesto 
+        for (mes = 1; mes < this.mes; mes++)//bucle que recorre el vector diasMes
         {//inicio for
             //acumulo los dias del mes hasta que llege al introducido
-            diasHastaFecha=diasHastaFecha+diasMes[mes-1];
+            diasHastaFecha = diasHastaFecha + diasMes[mes - 1];
         }//fin for
-        diasHastaFecha=diasHastaFecha+dia;//acumulo los dias del mes no completo
+        diasHastaFecha = diasHastaFecha + dia;//acumulo los dias del mes no completo
         return diasHastaFecha;
     }//fin metodo diaspasanAnno
 
+    public int distanciaFechas(Fecha fecha2) {
+        int dias=0, m;
+
+        if (year == fecha2.getYear()) {
+            if (mes == fecha2.getMes()) {
+                dias = fecha2.getDia() - dia;
+            } else {
+                dias = diasMes[mes - 1] - dia;
+                m = mes;
+
+                while (m < fecha2.getMes() - 1) {
+                    dias = dias + diasMes[m];
+                    m++;
+                }
+                dias=dias+fecha2.getDia();
+                /*el while en formato for
+                for(m=mes, m<fecha2.getMes()-1)
+                { dias=dias+diasMes[m], m++)
+                }
+                */
+            }
+            
+
+        }
+        return dias;
+    }
 }
