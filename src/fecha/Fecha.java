@@ -15,6 +15,7 @@ public class Fecha {
     private int mes;
     private int year;
 
+    private static int [] diasMes={31,28,31,30,31,30,31,31,30,31,30,31};
     /**
      * @return the dia
      */
@@ -128,5 +129,25 @@ public class Fecha {
         return resultado;
 
     }
+   
+    
+    /**
+     * metodo que calcula los dias que han pasado del año hasta la fecha que 
+     * introducimos
+     * @return los dias del año que han pasado hasta la fecha
+     */
+    public int diaspasanAno()
+    {//metodo diaspasanAno
+        int diasHastaFecha=0;//vble para acumular los dias que han pasado
+        int mes;//vble para ir recorriendo los meses
+        diasMes[1]=bisiesto(year);//compruebo si el año es bisiesto 
+        for (mes=1;mes<this.mes;mes++)//bucle que recorre el vector diasMes
+        {//inicio for
+            //acumulo los dias del mes hasta que llege al introducido
+            diasHastaFecha=diasHastaFecha+diasMes[mes-1];
+        }//fin for
+        diasHastaFecha=diasHastaFecha+dia;//acumulo los dias del mes no completo
+        return diasHastaFecha;
+    }//fin metodo diaspasanAnno
 
 }
