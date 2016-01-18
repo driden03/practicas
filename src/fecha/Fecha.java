@@ -78,6 +78,26 @@ public class Fecha {
 
         return dias;
     }
+    
+     public int bisiestoDias() {
+        int dias = 365;
+
+        if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+            dias = 366;
+        }
+
+        return dias;
+    }
+
+    public int bisiestoDias(int a) {
+        int dias = 365;
+
+        if ((a % 4 == 0 && a % 100 != 0) || (a % 400 == 0)) {
+            dias = 366;
+        }
+
+        return dias;
+    }
 
     public boolean comprobarFecha(int d, int m, int y) {
 
@@ -151,7 +171,7 @@ public class Fecha {
     }//fin metodo diaspasanAnno
 
     public int distanciaFechas(Fecha fecha2) {
-        int dias=0, m;
+        int dias=0, m, y;
 
         if (year == fecha2.getYear()) {
             if (mes == fecha2.getMes()) {
@@ -171,9 +191,29 @@ public class Fecha {
                 }
                 */
             }
-            
-
+                    
+            }
+        else{
+            y=year;
+           
+            while (y <fecha2.getYear())
+            {
+                dias=dias+diasMes[m];
+                m++;
+                if (m>12){
+                    m=0;
+                    y++;
+                }
+             
+            }
+            while (m < fecha2.getMes() - 1) {
+                    dias = dias + diasMes[m];
+                    m++;
+                }
+            dias=dias-;
         }
+
+        
         return dias;
     }
 }
