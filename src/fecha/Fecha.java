@@ -198,22 +198,10 @@ public class Fecha {
            
             while (y <fecha2.getYear())
             {
-                dias=dias+diasMes[m];
-                m++;
-                if (m>12){
-                    m=0;
-                    y++;
-                }
              
             }
-            while (m < fecha2.getMes() - 1) {
-                    dias = dias + diasMes[m];
-                    m++;
-                }
-            dias=dias-;
-        }
 
-        
+        }
         return dias;
     }
 }
